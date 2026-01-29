@@ -1,78 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Merge PDFs online for free at EasyUseHub. Fast, secure, mobile-friendly PDF merge tool.">
-<title>Merge PDFs – EasyUseHub</title>
+
+<meta name="description" content="Merge multiple PDF files into one online for free. Fast, secure and mobile-friendly PDF merge tool.">
+
+<title>Merge PDFS – Free Tool</title>
+
 <style>
-body { font-family: Arial,sans-serif; background:#0f0f0f; color:#fff; margin:0; padding:0; text-align:center; }
-.container { max-width:900px; margin:30px auto; padding:20px; }
-.logo img { max-width:220px; display:block; margin:0 auto 25px auto; }
-h1 { font-size:28px; margin-bottom:15px; }
-p { font-size:16px; line-height:1.6; color:#e5e5e5; margin-bottom:20px; }
-.welcome-box { background:rgba(0,0,0,0.6); padding:20px; border-radius:10px; margin-bottom:20px; }
+body{
+  font-family: Arial, sans-serif;
+  background:#0f0f0f;
+  color:#fff;
+  margin:0;
+  text-align:center;
+  min-height:100vh;
+}
 
-/* Tool Buttons full-width + border */
-.tool-btn { display:block; width:100%; padding:20px 0; margin:15px 0; font-size:18px; font-weight:bold; text-decoration:none; color:#fff; background:#2563eb; border:2px solid #fff; transition:0.3s; }
-.tool-btn:hover { opacity:0.9; }
+.container{
+  max-width:500px;
+  margin:30px auto;
+  padding:20px;
+}
 
-.home-btn { display:inline-block; margin-top:30px; padding:12px 25px; background:#111; color:white; text-decoration:none; border-radius:6px; font-size:16px; }
+/* Logo */
+.logo img{
+  max-width:140px;
+  margin:0 auto 20px auto;
+  display:block;
+}
 
-input[type=file], button { padding:12px 20px; font-size:16px; margin:10px 0; border-radius:6px; }
-button { background:#16a34a; color:white; border:none; cursor:pointer; }
+h1{margin-bottom:15px}
 
-.ad-placeholder { border:2px dashed #555; padding:20px; margin:25px 0; color:#aaa; font-size:14px; text-align:center; border-radius:0; }
+p{color:#e5e5e5;line-height:1.6}
 
-@media (max-width:768px){ h1{font-size:24px;} p{font-size:14px;} .tool-btn{font-size:16px; padding:18px 0;} }
+input,button{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  font-size:16px;
+  border:none;
+  border-radius:6px;
+}
+
+button{
+  background:#2563eb;
+  color:#fff;
+  cursor:pointer;
+}
+
+.ad{
+  border:2px dashed #555;
+  padding:20px;
+  margin:20px 0;
+  color:#aaa;
+}
+
+.home-btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:12px 25px;
+  background:#111;
+  color:#fff;
+  text-decoration:none;
+  border-radius:6px;
+}
 </style>
+
 </head>
+
 <body>
 
 <div class="container">
 
+  <!-- Logo -->
   <div class="logo">
-    <img src="https://i.ibb.co.com/7J50Lgj6/1769585193992.png" alt="Free PDF Tools Logo">
+    <img src="https://i.ibb.co.com/5XLjmZKw/file-00000000d63871fdba8af288585dcadb.png" alt="Merge PDF Logo">
   </div>
 
-  <div class="welcome-box">
-    <h1>Merge PDFs Online</h1>
-    <p>Select multiple PDF files to merge into one PDF file. Fast, secure, and mobile-friendly.</p>
-  </div>
+  <h1>Merge PDFs Online</h1>
 
-  <div class="ad-placeholder">AdSense Ad Placeholder (Top)</div>
+  <p>Upload multiple PDF files and merge them into one file instantly. Fast, secure and works on all devices.</p>
 
-  <input type="file" id="mergeFiles" accept="application/pdf" multiple><br>
-  <button onclick="mergePDFs()">Merge PDFs</button>
-  <div id="mergeResult" style="margin-top:15px; color:#fff;"></div>
+  <div class="ad">AdSense Ad Placeholder (Top)</div>
 
-  <div class="ad-placeholder">AdSense Ad Placeholder (Bottom)</div>
+  <input type="file" multiple accept="application/pdf">
 
-  <a class="home-btn" href="https://easyusehub.blogspot.com/p/free-pdf-tools-easyusehub.html?m=1">🏠 Back to Free PDF Tools</a>
+  <button>Merge PDFs</button>
+
+  <div class="ad">AdSense Ad Placeholder (Bottom)</div>
+
+  <a class="home-btn" href="https://easyusehub.blogspot.com/p/free-pdf-tools-easyusehub.html?m=1">
+    🏠 Back to PDF Tools
+  </a>
 
 </div>
 
-<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
-<script>
-async function mergePDFs(){
-  const files=document.getElementById('mergeFiles').files;
-  if(files.length<2){ alert('Select at least 2 PDFs'); return; }
-  const mergedPdf=await PDFLib.PDFDocument.create();
-  for(const file of files){
-    const arrayBuffer=await file.arrayBuffer();
-    const pdf=await PDFLib.PDFDocument.load(arrayBuffer);
-    const copiedPages=await mergedPdf.copyPages(pdf,pdf.getPageIndices());
-    copiedPages.forEach(page=>mergedPdf.addPage(page));
-  }
-  const mergedPdfBytes=await mergedPdf.save();
-  const blob=new Blob([mergedPdfBytes],{type:'application/pdf'});
-  const link=document.createElement('a');
-  link.href=URL.createObjectURL(blob);
-  link.download='merged.pdf';
-  link.click();
-  document.getElementById('mergeResult').innerText='PDFs merged successfully! File downloaded.';
-}
-</script>
-
 </body>
-</html>
+</PDF>
