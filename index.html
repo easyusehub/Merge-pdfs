@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="Merge multiple PDF files into one online for free. Fast, secure and mobile-friendly PDF merge tool.">
-
-<title>Merge PDFS – Free Tool</title>
+<meta name="description" content="Merge multiple PDF files into one PDF online for free. Fast, secure, and easy-to-use PDF merge tool.">
+<title>Merge PDFs – Free Online Tool</title>
 
 <style>
 body{
@@ -30,11 +27,18 @@ body{
   max-width:140px;
   margin:0 auto 20px auto;
   display:block;
+  opacity:0.9;
 }
 
-h1{margin-bottom:15px}
+h1{
+  margin-bottom:15px;
+}
 
-p{color:#e5e5e5;line-height:1.6}
+p{
+  color:#e5e5e5;
+  line-height:1.6;
+  margin-bottom:20px;
+}
 
 input,button{
   width:100%;
@@ -66,37 +70,73 @@ button{
   color:#fff;
   text-decoration:none;
   border-radius:6px;
+  font-size:16px;
 }
 </style>
 
 </head>
-
 <body>
 
 <div class="container">
 
   <!-- Logo -->
   <div class="logo">
-    <img src="https://i.ibb.co.com/5XLjmZKw/file-00000000d63871fdba8af288585dcadb.png" alt="Merge PDF Logo">
+    <img src="https://i.ibb.co.com/5XLjmZKw/file-00000000d63871fdba8af288585dcadb.png" alt="Merge PDFs Logo">
   </div>
 
-  <h1>Merge PDFs Online</h1>
+  <!-- Heading -->
+  <h1>Merge PDFs</h1>
+  <p>Upload multiple PDF files and merge them into one PDF instantly. Fast, secure and works on all devices.</p>
 
-  <p>Upload multiple PDF files and merge them into one file instantly. Fast, secure and works on all devices.</p>
-
+  <!-- Ad Placeholder Top -->
   <div class="ad">AdSense Ad Placeholder (Top)</div>
 
-  <input type="file" multiple accept="application/pdf">
+  <!-- PDF Merge input -->
+  <input type="file" id="pdfMergeFiles" accept="application/pdf" multiple>
+  <button onclick="mergePDFs()">Merge PDFs</button>
 
-  <button>Merge PDFs</button>
+  <div id="mergeResult" style="margin-top:20px; color:#fff;"></div>
 
+  <!-- Ad Placeholder Bottom -->
   <div class="ad">AdSense Ad Placeholder (Bottom)</div>
 
+  <!-- Home Button -->
   <a class="home-btn" href="https://easyusehub.blogspot.com/p/free-pdf-tools-easyusehub.html?m=1">
     🏠 Back to PDF Tools
   </a>
 
 </div>
 
+<!-- JS for merging PDFs -->
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<script>
+async function mergePDFs() {
+  const files = document.getElementById('pdfMergeFiles').files;
+  if(files.length < 2) {
+    alert('Select at least 2 PDF files to merge');
+    return;
+  }
+
+  const mergedPdf = await PDFLib.PDFDocument.create();
+
+  for(const file of files){
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await PDFLib.PDFDocument.load(arrayBuffer);
+    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+    copiedPages.forEach(page => mergedPdf.addPage(page));
+  }
+
+  const mergedPdfBytes = await mergedPdf.save();
+  const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'merged.pdf';
+  link.click();
+
+  document.getElementById('mergeResult').innerText = '✅ PDFs merged successfully! File downloaded.';
+}
+</script>
+
 </body>
-</PDF>
+</html>
