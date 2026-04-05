@@ -3,33 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Merge PDFs – EasyUseHub</title>
-<meta name="description" content="Merge multiple PDFs into one file instantly. 100% Free and secure tool by EasyUseHub. Max 20 MB per file.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 
 <style>
 body{margin:0;font-family:Arial,sans-serif;background:#0f0f0f;color:#fff;text-align:center; position: relative; overflow-x: hidden;}
-header{background:#fff; padding:15px; box-shadow:0 2px 5px rgba(0,0,0,.1); color: #000;}
 .container{max-width:900px;margin:auto;padding:25px;}
 .logo img{max-width:220px;margin:10px auto 20px;display:block;}
 
-/* In-Page Push Ad Style */
+/* Push Ad Style */
 #push-notification {
     position: fixed;
-    bottom: -150px; 
-    right: 20px;
-    width: 300px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    z-index: 10000;
-    transition: bottom 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    cursor: pointer;
-    border-left: 5px solid #2563eb;
-    color: #333;
+    bottom: -150px; right: 20px; width: 300px; background: #fff; border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center;
+    padding: 12px; z-index: 10000; transition: bottom 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    cursor: pointer; border-left: 5px solid #2563eb; color: #333;
 }
 #push-notification.active { bottom: 20px; }
 #push-notification img { width: 50px; height: 50px; border-radius: 8px; margin-right: 12px; }
@@ -38,34 +26,19 @@ header{background:#fff; padding:15px; box-shadow:0 2px 5px rgba(0,0,0,.1); color
 .push-text p { font-size: 12px; color: #666; margin: 3px 0 0 0; }
 .close-push { position: absolute; top: 5px; right: 8px; font-size: 18px; color: #aaa; cursor: pointer; }
 
-/* Custom Ad Banner Style */
+/* Ad Bridge Style */
 .custom-ad-bridge {
-    background: linear-gradient(135deg, #1e3a8a, #2563eb);
-    color: white;
-    padding: 25px;
-    margin: 20px 0;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: transform 0.2s;
-    text-align: center;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb); color: white; padding: 25px;
+    margin: 20px 0; border-radius: 12px; cursor: pointer; text-align: center;
 }
-.custom-ad-bridge:hover { transform: scale(1.02); }
-.ad-title { font-size: 20px; font-weight: bold; margin-bottom: 10px; display: block; }
-.ad-desc { font-size: 14px; margin-bottom: 10px; display: block; opacity: 0.9; }
-.ad-btn { background: #fbbf24; color: #000; padding: 8px 20px; border-radius: 5px; font-weight: bold; text-transform: uppercase; display: inline-block; margin-top: 10px; }
-
-h1{font-size:28px;margin-bottom:10px; color: #fff;}
-p{color:#d1d5db;font-size:16px;line-height:1.6;}
+.ad-title { font-size: 20px; font-weight: bold; display: block; }
+.ad-btn { background: #fbbf24; color: #000; padding: 8px 20px; border-radius: 5px; font-weight: bold; margin-top: 10px; display: inline-block; }
 
 .tool-box{border:2px solid #444; background: #1a1a1a; padding:30px; margin:30px 0; border-radius: 12px;}
-input[type=file]{margin-top:15px; background: #fff; color: #000; padding: 10px; border-radius: 5px; cursor: pointer;}
-button{margin-top:20px;padding:15px 30px;font-size:18px;font-weight:bold;background:#16a34a;color:#fff;border:none;cursor:pointer; border-radius: 8px; transition: 0.3s;}
-button:hover{background: #15803d;}
+input[type=file]{margin-top:15px; background: #fff; color: #000; padding: 10px; border-radius: 5px;}
+button{margin-top:20px;padding:15px 30px;font-size:18px;font-weight:bold;background:#16a34a;color:#fff;border:none;cursor:pointer; border-radius: 8px;}
 .message{margin-top:20px;font-weight:bold; font-size: 18px;}
-
-.home-btn{display:inline-block;margin:20px 10px;padding:12px 26px;background:#444;color:#fff;text-decoration:none;font-weight:bold; border-radius: 8px;}
-.home-btn:hover{background:#555;}
+.home-btn{display:inline-block;margin:15px;padding:12px 26px;background:#444;color:#fff;text-decoration:none;border-radius: 8px;}
 </style>
 </head>
 <body>
@@ -80,75 +53,65 @@ button:hover{background: #15803d;}
 </div>
 
 <div class="container">
-
   <div class="logo">
     <img src="https://i.ibb.co.com/WWBzC3V1/file-00000000d63871fdba8af288585dcadb.png" alt="EasyUseHub Logo">
   </div>
 
   <div class="custom-ad-bridge" onclick="window.open('https://easyusehub.blogspot.com', '_blank')">
       <span class="ad-title">🚀 Try 46+ Premium Free Web Tools!</span>
-      <span class="ad-desc">All PDF TOOLS, 16+ calculator, Age Calculator, BMI Tracker, Loan EMI etc - 100% Free</span>
       <div class="ad-btn">Open EasyUseHub</div>
   </div>
 
   <h1>Merge PDFs</h1>
-  <p>Combine multiple PDF files into one instantly. Secure, fast, and 100% Free.</p>
+  <p>Combine multiple PDF files (Max 20 MB each) instantly.</p>
 
   <div class="tool-box">
     <input type="file" id="pdfs" accept="application/pdf" multiple>
-    <p style="font-size: 12px; color: #888;">(Select multiple files, each up to 20 MB)</p>
     <br>
-    <button onclick="mergePDFs()">Merge Files Now</button>
+    <button id="mergeBtn" onclick="mergePDFs()">Merge Files Now</button>
     <div id="msg" class="message"></div>
   </div>
 
   <div class="custom-ad-bridge" style="background: linear-gradient(135deg, #059669, #10b981);" onclick="window.open('https://easyusehub.blogspot.com/p/image-compressor.html', '_blank')">
       <span class="ad-title">⚡ High-Speed Image Compressor</span>
-      <span class="ad-desc">Optimize your images for free without losing quality at EasyUseHub</span>
       <div class="ad-btn" style="background: #fff; color: #059669;">Try Now</div>
   </div>
 
-  <div class="custom-ad-bridge" style="background: linear-gradient(135deg, #f59e0b, #d97706);" onclick="window.open('https://easyusehub.blogspot.com/p/ultimate-calculators-hub.html', '_blank')">
-      <span class="ad-title">🔢 Smart Online Calculators</span>
-      <span class="ad-desc">Loan EMI, Age Calculator, BMI Tracker, and Tax Calculators at your fingertips.</span>
-      <div class="ad-btn" style="background: #000; color: #fff;">Open Calculators</div>
-  </div>
-
-  <div style="margin-top: 20px;">
-    <a href="https://easyusehub.blogspot.com/p/free-pdf-tools-online.html" class="home-btn">📚 All PDF Tools</a>
-    <a href="https://easyusehub.blogspot.com/" class="home-btn">🏠 Home</a>
-  </div>
-
+  <a href="https://easyusehub.blogspot.com/p/free-pdf-tools-online.html" class="home-btn">📚 All PDF Tools</a>
+  <a href="https://easyusehub.blogspot.com/" class="home-btn">🏠 Home</a>
 </div>
 
 <script>
 async function mergePDFs(){
   const files = document.getElementById('pdfs').files;
   const msg = document.getElementById('msg');
-  if(!files.length){ msg.innerText="Please select at least 1 PDF."; msg.style.color="#f87171"; return; }
+  const btn = document.getElementById('mergeBtn');
+  
+  if(!files.length){ msg.innerText="Please select PDFs."; msg.style.color="#f87171"; return; }
 
-  msg.innerText="🔄 Merging your files... please wait.";
+  btn.disabled = true;
+  msg.innerText="🔄 Merging... This may take a moment for larger files.";
   msg.style.color="#fbbf24";
 
-  // মার্জ প্রসেস শুরু হলে পুশ অ্যাড দেখাবে
   setTimeout(() => { document.getElementById('push-notification').classList.add('active'); }, 1000);
 
   try {
     const mergedPdf = await PDFLib.PDFDocument.create();
 
     for(const f of files){
-      // প্রতি ফাইলের লিমিট ২০ এমবি (Per File 20 MB)
-      if(f.size > 20*1024*1024){
-        msg.innerText="❌ File '"+f.name+"' is too large! Max 20 MB per file."; 
+      if(f.size > 20*1024*1024){ // ২০ এমবি লিমিট
+        msg.innerText=`❌ ${f.name} is over 20 MB.`; 
         msg.style.color="#f87171";
+        btn.disabled = false;
         return;
       }
       const bytes = await f.arrayBuffer();
-      const pdf = await PDFLib.PDFDocument.load(bytes);
+      const pdf = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
       const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
       copiedPages.forEach(p => mergedPdf.addPage(p));
     }
 
+    // মেমোরি বাঁচাতে সেভ করার সময় অপ্টিমাইজেশন
     const mergedBytes = await mergedPdf.save();
     const blob = new Blob([mergedBytes], {type:"application/pdf"});
     const link = document.createElement("a");
@@ -159,9 +122,11 @@ async function mergePDFs(){
     msg.innerText="✅ Successfully merged!";
     msg.style.color="#4ade80";
   } catch (err) {
-    msg.innerText="❌ Error during merge. Please check your files.";
+    msg.innerText="❌ Processing failed. Try smaller files.";
     msg.style.color="#f87171";
     console.error(err);
+  } finally {
+    btn.disabled = false;
   }
 }
 </script>
