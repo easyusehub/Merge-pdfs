@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Merge PDFs – EasyUseHub</title>
-<meta name="description" content="Merge multiple PDFs into one file instantly in your browser. 100% Free and secure tool by EasyUseHub. Max 20 MB per file.">
+<meta name="description" content="Merge multiple PDFs into one file instantly. 100% Free and secure tool by EasyUseHub. Max 20 MB per file.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 
@@ -59,7 +59,7 @@ h1{font-size:28px;margin-bottom:10px; color: #fff;}
 p{color:#d1d5db;font-size:16px;line-height:1.6;}
 
 .tool-box{border:2px solid #444; background: #1a1a1a; padding:30px; margin:30px 0; border-radius: 12px;}
-input[type=file]{margin-top:15px; background: #fff; color: #000; padding: 10px; border-radius: 5px;}
+input[type=file]{margin-top:15px; background: #fff; color: #000; padding: 10px; border-radius: 5px; cursor: pointer;}
 button{margin-top:20px;padding:15px 30px;font-size:18px;font-weight:bold;background:#16a34a;color:#fff;border:none;cursor:pointer; border-radius: 8px; transition: 0.3s;}
 button:hover{background: #15803d;}
 .message{margin-top:20px;font-weight:bold; font-size: 18px;}
@@ -92,18 +92,19 @@ button:hover{background: #15803d;}
   </div>
 
   <h1>Merge PDFs</h1>
-  <p>Merge multiple PDFs into one file instantly. Private, secure, and 100% Free.</p>
+  <p>Combine multiple PDF files into one instantly. Secure, fast, and 100% Free.</p>
 
   <div class="tool-box">
     <input type="file" id="pdfs" accept="application/pdf" multiple>
+    <p style="font-size: 12px; color: #888;">(Select multiple files, each up to 20 MB)</p>
     <br>
-    <button onclick="mergePDFs()">Combine PDFs Now</button>
+    <button onclick="mergePDFs()">Merge Files Now</button>
     <div id="msg" class="message"></div>
   </div>
 
   <div class="custom-ad-bridge" style="background: linear-gradient(135deg, #059669, #10b981);" onclick="window.open('https://easyusehub.blogspot.com/p/image-compressor.html', '_blank')">
       <span class="ad-title">⚡ High-Speed Image Compressor</span>
-      <span class="ad-desc">Compress your images without losing quality - Fast & Free at EasyUseHub</span>
+      <span class="ad-desc">Optimize your images for free without losing quality at EasyUseHub</span>
       <div class="ad-btn" style="background: #fff; color: #059669;">Try Now</div>
   </div>
 
@@ -113,8 +114,10 @@ button:hover{background: #15803d;}
       <div class="ad-btn" style="background: #000; color: #fff;">Open Calculators</div>
   </div>
 
-  <a href="https://easyusehub.blogspot.com/p/free-pdf-tools-online.html" class="home-btn">📚 All PDF Tools</a>
-  <a href="https://easyusehub.blogspot.com/" class="home-btn">🏠 Home</a>
+  <div style="margin-top: 20px;">
+    <a href="https://easyusehub.blogspot.com/p/free-pdf-tools-online.html" class="home-btn">📚 All PDF Tools</a>
+    <a href="https://easyusehub.blogspot.com/" class="home-btn">🏠 Home</a>
+  </div>
 
 </div>
 
@@ -124,19 +127,19 @@ async function mergePDFs(){
   const msg = document.getElementById('msg');
   if(!files.length){ msg.innerText="Please select at least 1 PDF."; msg.style.color="#f87171"; return; }
 
-  msg.innerText="🔄 Merging... please wait.";
+  msg.innerText="🔄 Merging your files... please wait.";
   msg.style.color="#fbbf24";
 
-  // মার্জ শুরু হলে পুশ অ্যাড দেখাবে
+  // মার্জ প্রসেস শুরু হলে পুশ অ্যাড দেখাবে
   setTimeout(() => { document.getElementById('push-notification').classList.add('active'); }, 1000);
 
   try {
     const mergedPdf = await PDFLib.PDFDocument.create();
 
     for(const f of files){
-      // লিমিট ২০ এমবি করা হয়েছে
+      // প্রতি ফাইলের লিমিট ২০ এমবি (Per File 20 MB)
       if(f.size > 20*1024*1024){
-        msg.innerText="❌ File "+f.name+" exceeds 20 MB limit."; 
+        msg.innerText="❌ File '"+f.name+"' is too large! Max 20 MB per file."; 
         msg.style.color="#f87171";
         return;
       }
@@ -153,10 +156,10 @@ async function mergePDFs(){
     link.download = "Merged-EasyUseHub.pdf";
     link.click();
 
-    msg.innerText="✅ PDFs merged successfully!";
+    msg.innerText="✅ Successfully merged!";
     msg.style.color="#4ade80";
   } catch (err) {
-    msg.innerText="❌ Error merging PDFs. Try again.";
+    msg.innerText="❌ Error during merge. Please check your files.";
     msg.style.color="#f87171";
     console.error(err);
   }
