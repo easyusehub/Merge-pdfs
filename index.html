@@ -2,43 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Merge PDFs – EasyUseHub</title>
+<title>Ultimate PDF Merge – EasyUseHub</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#0f0f0f;color:#fff;text-align:center; position: relative; overflow-x: hidden;}
-.container{max-width:900px;margin:auto;padding:25px;}
-.logo img{max-width:220px;margin:10px auto 20px;display:block;}
+:root { --primary: #16a34a; --bg: #0f0f0f; --card: #1a1a1a; --text: #f3f4f6; }
+body{margin:0; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:var(--bg); color:var(--text); text-align:center; overflow-x: hidden; line-height: 1.5;}
+.container{max-width:850px; margin:auto; padding:20px;}
+.logo img{max-width:200px; margin:20px auto; display:block; filter: drop-shadow(0 0 5px rgba(255,255,255,0.1));}
 
-/* Push Ad Style */
+/* Premium Push Ad */
 #push-notification {
-    position: fixed;
-    bottom: -150px; right: 20px; width: 300px; background: #fff; border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center;
-    padding: 12px; z-index: 10000; transition: bottom 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    cursor: pointer; border-left: 5px solid #2563eb; color: #333;
+    position: fixed; bottom: -150px; right: 20px; width: 320px; background: #fff; border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4); display: flex; align-items: center; padding: 15px; 
+    z-index: 10000; transition: all 0.5s ease-in-out; border-left: 6px solid #2563eb; color: #333; cursor: pointer;
 }
-#push-notification.active { bottom: 20px; }
-#push-notification img { width: 50px; height: 50px; border-radius: 8px; margin-right: 12px; }
-.push-text { text-align: left; flex: 1; }
-.push-text b { font-size: 14px; color: #222; display: block; }
-.push-text p { font-size: 12px; color: #666; margin: 3px 0 0 0; }
-.close-push { position: absolute; top: 5px; right: 8px; font-size: 18px; color: #aaa; cursor: pointer; }
+#push-notification.active { bottom: 25px; }
+#push-notification img { width: 45px; height: 45px; border-radius: 6px; margin-right: 12px; }
+.push-text b { font-size: 15px; color: #111; display: block; }
+.push-text p { font-size: 13px; color: #555; margin: 2px 0 0 0; }
+.close-push { position: absolute; top: 8px; right: 10px; font-size: 20px; color: #999; cursor: pointer; }
 
-/* Ad Bridge Style */
-.custom-ad-bridge {
-    background: linear-gradient(135deg, #1e3a8a, #2563eb); color: white; padding: 25px;
-    margin: 20px 0; border-radius: 12px; cursor: pointer; text-align: center;
+/* Ad Bridge */
+.ad-bridge {
+    background: linear-gradient(145deg, #1e3a8a, #2563eb); color: white; padding: 30px;
+    margin: 25px 0; border-radius: 15px; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
-.ad-title { font-size: 20px; font-weight: bold; display: block; }
-.ad-btn { background: #fbbf24; color: #000; padding: 8px 20px; border-radius: 5px; font-weight: bold; margin-top: 10px; display: inline-block; }
+.ad-bridge:hover { transform: translateY(-3px); }
+.ad-btn { background: #fbbf24; color: #000; padding: 10px 25px; border-radius: 8px; font-weight: bold; margin-top: 12px; display: inline-block; text-transform: uppercase; letter-spacing: 0.5px; }
 
-.tool-box{border:2px solid #444; background: #1a1a1a; padding:30px; margin:30px 0; border-radius: 12px;}
-input[type=file]{margin-top:15px; background: #fff; color: #000; padding: 10px; border-radius: 5px;}
-button{margin-top:20px;padding:15px 30px;font-size:18px;font-weight:bold;background:#16a34a;color:#fff;border:none;cursor:pointer; border-radius: 8px;}
-.message{margin-top:20px;font-weight:bold; font-size: 18px;}
-.home-btn{display:inline-block;margin:15px;padding:12px 26px;background:#444;color:#fff;text-decoration:none;border-radius: 8px;}
+/* Tool Box */
+.tool-box{ background: var(--card); padding:40px 20px; margin:30px 0; border-radius: 20px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+h1{ font-size: 32px; font-weight: 800; margin-bottom: 10px; background: linear-gradient(to right, #fff, #9ca3af); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+input[type=file]{ margin: 20px 0; padding: 15px; background: #222; color: #fff; border: 2px dashed #444; border-radius: 10px; width: 90%; cursor: pointer; }
+.main-btn{ padding:18px 40px; font-size:20px; font-weight:bold; background:var(--primary); color:#fff; border:none; cursor:pointer; border-radius: 12px; box-shadow: 0 5px 15px rgba(22, 163, 74, 0.4); transition: 0.3s; }
+.main-btn:hover:not(:disabled){ background: #15803d; transform: scale(1.02); }
+.main-btn:disabled{ background: #444; cursor: not-allowed; box-shadow: none; }
+
+#msg{ margin-top:25px; font-size: 18px; font-weight: 600; min-height: 27px; }
+.home-btn{ display:inline-block; margin:15px; padding:14px 30px; background:#333; color:#fff; text-decoration:none; border-radius: 10px; font-weight: 600; transition: 0.3s; }
+.home-btn:hover{ background: #444; }
 </style>
 </head>
 <body>
@@ -48,7 +52,7 @@ button{margin-top:20px;padding:15px 30px;font-size:18px;font-weight:bold;backgro
     <img src="https://cdn-icons-png.flaticon.com/512/5968/5968313.png" alt="icon">
     <div class="push-text">
         <b>🚀 46+ Premium Free Tools Ready!</b>
-        <p>PDF Tools, Calculators & more - 100% Free at EasyUseHub.</p>
+        <p>Instant PDF tools, Calculators & more - 100% Free.</p>
     </div>
 </div>
 
@@ -57,77 +61,109 @@ button{margin-top:20px;padding:15px 30px;font-size:18px;font-weight:bold;backgro
     <img src="https://i.ibb.co.com/WWBzC3V1/file-00000000d63871fdba8af288585dcadb.png" alt="EasyUseHub Logo">
   </div>
 
-  <div class="custom-ad-bridge" onclick="window.open('https://easyusehub.blogspot.com', '_blank')">
-      <span class="ad-title">🚀 Try 46+ Premium Free Web Tools!</span>
-      <div class="ad-btn">Open EasyUseHub</div>
+  <div class="ad-bridge" onclick="window.open('https://easyusehub.blogspot.com', '_blank')">
+      <span style="font-size: 22px; font-weight: bold; display: block;">🚀 Unlock 46+ Premium Free Web Tools!</span>
+      <div class="ad-btn">Explore Now</div>
   </div>
 
-  <h1>Merge PDFs</h1>
-  <p>Combine multiple PDF files (Max 20 MB each) instantly.</p>
+  <h1>Merge PDF Documents</h1>
+  <p>Securely combine multiple PDF files into one. Fast processing, no file limits (Max 20MB per file), and totally free.</p>
 
   <div class="tool-box">
     <input type="file" id="pdfs" accept="application/pdf" multiple>
     <br>
-    <button id="mergeBtn" onclick="mergePDFs()">Merge Files Now</button>
-    <div id="msg" class="message"></div>
+    <button id="mergeBtn" class="main-btn" onclick="mergePDFs()">Merge & Download</button>
+    <div id="msg"></div>
   </div>
 
-  <div class="custom-ad-bridge" style="background: linear-gradient(135deg, #059669, #10b981);" onclick="window.open('https://easyusehub.blogspot.com/p/image-compressor.html', '_blank')">
-      <span class="ad-title">⚡ High-Speed Image Compressor</span>
-      <div class="ad-btn" style="background: #fff; color: #059669;">Try Now</div>
+  <div class="ad-bridge" style="background: linear-gradient(145deg, #059669, #10b981);" onclick="window.open('https://easyusehub.blogspot.com/p/image-compressor.html', '_blank')">
+      <span style="font-size: 20px; font-weight: bold; display: block;">⚡ Compress Converted Images Instantly</span>
+      <div class="ad-btn" style="background: #fff; color: #059669;">Compress Now</div>
   </div>
 
-  <a href="https://easyusehub.blogspot.com/p/free-pdf-tools-online.html" class="home-btn">📚 All PDF Tools</a>
-  <a href="https://easyusehub.blogspot.com/" class="home-btn">🏠 Home</a>
+  <div style="margin-top: 30px;">
+    <a href="https://easyusehub.blogspot.com/p/free-pdf-tools-online.html" class="home-btn" style="background: #2563eb;">📚 All PDF Tools</a>
+    <a href="https://easyusehub.blogspot.com/" class="home-btn">🏠 EasyUseHub Home</a>
+  </div>
 </div>
 
 <script>
+// ১. ব্রাউজারের মেমোরি ম্যানেজমেন্টের জন্য PDFLib অবজেক্ট সেট করা
 async function mergePDFs(){
-  const files = document.getElementById('pdfs').files;
-  const msg = document.getElementById('msg');
-  const btn = document.getElementById('mergeBtn');
-  
-  if(!files.length){ msg.innerText="Please select PDFs."; msg.style.color="#f87171"; return; }
-
-  btn.disabled = true;
-  msg.innerText="🔄 Merging... This may take a moment for larger files.";
-  msg.style.color="#fbbf24";
-
-  setTimeout(() => { document.getElementById('push-notification').classList.add('active'); }, 1000);
-
-  try {
-    const mergedPdf = await PDFLib.PDFDocument.create();
-
-    for(const f of files){
-      if(f.size > 20*1024*1024){ // ২০ এমবি লিমিট
-        msg.innerText=`❌ ${f.name} is over 20 MB.`; 
-        msg.style.color="#f87171";
-        btn.disabled = false;
-        return;
-      }
-      const bytes = await f.arrayBuffer();
-      const pdf = await PDFLib.PDFDocument.load(bytes, { ignoreEncryption: true });
-      const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
-      copiedPages.forEach(p => mergedPdf.addPage(p));
+    const fileInput = document.getElementById('pdfs');
+    const files = fileInput.files;
+    const msg = document.getElementById('msg');
+    const btn = document.getElementById('mergeBtn');
+    
+    if(!files.length){ 
+        msg.innerText="❌ Please select at least one PDF file."; 
+        msg.style.color="#f87171"; 
+        return; 
     }
 
-    // মেমোরি বাঁচাতে সেভ করার সময় অপ্টিমাইজেশন
-    const mergedBytes = await mergedPdf.save();
-    const blob = new Blob([mergedBytes], {type:"application/pdf"});
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "Merged-EasyUseHub.pdf";
-    link.click();
+    btn.disabled = true;
+    msg.innerText="🔄 Initializing... Preparing files.";
+    msg.style.color="#fbbf24";
 
-    msg.innerText="✅ Successfully merged!";
-    msg.style.color="#4ade80";
-  } catch (err) {
-    msg.innerText="❌ Processing failed. Try smaller files.";
-    msg.style.color="#f87171";
-    console.error(err);
-  } finally {
-    btn.disabled = false;
-  }
+    // পুশ অ্যাড ট্রিগার
+    setTimeout(() => { document.getElementById('push-notification').classList.add('active'); }, 1000);
+
+    try {
+        const mergedPdf = await PDFLib.PDFDocument.create();
+        
+        for(let i = 0; i < files.length; i++){
+            const f = files[i];
+            
+            // ২০ এমবি লিমিট চেক
+            if(f.size > 20 * 1024 * 1024){
+                throw new Error(`File "${f.name}" is larger than 20MB.`);
+            }
+
+            msg.innerText = `🔄 Processing file ${i+1} of ${files.length}...`;
+            
+            // ফাইল রিড করা (ArrayBuffer মেমোরিতে কম জায়গা নেয়)
+            const arrayBuffer = await f.arrayBuffer();
+            const pdf = await PDFLib.PDFDocument.load(arrayBuffer, { 
+                ignoreEncryption: true,
+                throwOnInvalidObject: false 
+            });
+
+            // পেজ কপি করা (Memory Efficient loop)
+            const pages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+            pages.forEach(page => mergedPdf.addPage(page));
+            
+            // মেমোরি থেকে সোর্স ডেটা ক্লিনআপের সুযোগ দেওয়া (Garbage Collection)
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+
+        msg.innerText = "⏳ Finalizing & Optimizing PDF...";
+        
+        // ফাইল সেভ করা (ব্রাউজার ক্রাশ এড়াতে অপ্টিমাইজড সেভ)
+        const pdfBytes = await mergedPdf.save({ useObjectStreams: false });
+        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+        
+        const downloadLink = document.createElement('a');
+        downloadLink.href = url;
+        downloadLink.download = `EasyUseHub_Merged_${Date.now()}.pdf`;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+
+        // মেমোরি রিলিজ
+        setTimeout(() => URL.revokeObjectURL(url), 100);
+
+        msg.innerText="✅ Successfully Merged & Downloaded!";
+        msg.style.color="#4ade80";
+        fileInput.value = ""; // রিসেট
+
+    } catch (err) {
+        msg.innerText = `❌ Error: ${err.message}`;
+        msg.style.color="#f87171";
+        console.error("Critical Error:", err);
+    } finally {
+        btn.disabled = false;
+    }
 }
 </script>
 </body>
